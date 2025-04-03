@@ -1,15 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class default_1 {
-    constructor() {
-    }
+class DiagnosticActivity {
     multiple_next(a, b) {
         // Divide b por a e arredonda para cima
         let c = Math.ceil(b / a);
         // Multiplica o resultado por a para obter o próximo múltiplo  
         let d = c * a;
         // Retorna o próximo múltiplo
-        console.log("Primeiro multiplo de " + a + " maior que " + b + " é: " + d);
+        return "Primeiro multiplo de " + a + " maior que " + b + " é: " + d;
     }
     check_validity(dateVal) {
         let dateToday = 31032025;
@@ -42,4 +40,4 @@ class default_1 {
         return `${n} é primo`;
     }
 }
-exports.default = default_1;
+exports.default = DiagnosticActivity;

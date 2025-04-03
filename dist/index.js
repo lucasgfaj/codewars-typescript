@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const _diagnostic_activity_1 = __importDefault(require("./algorithms/ diagnostic_activity"));
+const first_prime_1 = __importDefault(require("./algorithms/first_prime"));
 // import SimpleInstruct from "./algorithms/simple-instruct";
 // const simpleInstructClass = new SimpleInstruct();
 // console.log(simpleInstructClass.callName());
@@ -14,7 +14,9 @@ const _diagnostic_activity_1 = __importDefault(require("./algorithms/ diagnostic
 // console.log(simpleInstructClass.matrizBidimensional());
 // console.log(simpleInstructClass.testWhile());
 // console.log(simpleInstructClass.testDoWhile());
-const diagnostic_activity = new _diagnostic_activity_1.default();
-console.log(diagnostic_activity.multiple_next(5, 14));
-console.log(diagnostic_activity.check_validity(30042025));
-console.log(diagnostic_activity.isprimo(4));
+// const diagnostic_activity = new DiagnosticActivity();
+// console.log(diagnostic_activity.multiple_next(5, 14));
+// console.log(diagnostic_activity.check_validity(30042025));
+// console.log(diagnostic_activity.isprimo(4));
+const primos = new first_prime_1.default(25);
+console.log(primos.primeirosPrimos());
