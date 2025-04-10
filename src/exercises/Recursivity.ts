@@ -87,13 +87,14 @@ export default class Recursivity {
     return this.fibonacci(n - 1) + this.fibonacci(n - 2);
   }
 
-  // TRIBONACCI – Este exercício é uma mera progressão do anterior. Dado um inteiro positivo n,
+  // TRIBONACCI – Este exercício é uma mera progressãos do anterior. Dado um inteiro positivo n,
   // imprima o n-ésimo termo da série de Tribonacci. Saiba que os três primeiros termos desta série são
   // 1, 1 e 2; e os demais são gerados a partir da soma dos anteriores: 1 1 2 4 7 13 24 44...
 
   public tribonacci(n: number): number {
-    if (n === 0) return 0; 
-    if (n === 1 || n === 2) return 1; 
+    if (n === 0) return 0; // O primeirot termo é 0
+    if (n === 1 || n === 2) return 1;  // O segundo termo é 1
+    if (n === 3) return 2; // O terceiro termo é 2
     return this.tribonacci(n - 1) + this.tribonacci(n - 2) + this.tribonacci(n - 3);
   }
 
@@ -103,16 +104,21 @@ export default class Recursivity {
   //     gerados a partir da soma dos anteriores: 1 1 2 4 8 15 29 56...
 
   public tetranacci(n: number): number {
-    if (n === 0 || n === 1 || n === 2) return 0;
-    if (n === 3 ) return 1;
-    return this.tetranacci(n - 1) + this.tetranacci(n - 2) + this.tetranacci(n - 3) + this.tetranacci( n - 4) 
- }
+    if (n === 0) return 1;    // O primeiro termo é 1
+    if (n === 1) return 1;    // O segundo termo é 1
+    if (n === 2) return 2;    // O terceiro termo é 2
+    if (n === 3) return 4;    // O quarto termo é 4
+    return this.tetranacci(n - 1) + this.tetranacci(n - 2) + this.tetranacci(n - 3) + this.tetranacci(n - 4); 
+  }
+  
 
   // PRIMEIRA OCORRÊNCIA – Dado um inteiro e uma matriz unidimensional de 20 inteiros (convenção
   //     para os próximos exercícios), não ordenados, retorne a posição da primeira ocorrência do inteiro na
   //     matriz. Caso não haja ocorrência, retorne -1.
 
-  public firstOcorrency() {}
+  public firstOcorrency(n: number, matriz: number[]) {
+
+  }
   //         PRIMEIRA OCORRÊNCIA ORDENADO – Idem ao anterior, mas suponha que a matriz
   // unidimensional esteja ordenada. Preze pela eficiência.
 
