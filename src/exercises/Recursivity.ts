@@ -1,20 +1,16 @@
 export default class Recursivity {
   constructor() {}
 
-  // MENSAGEM – Implemente um método que exiba n vezes uma mensagem na telaK
   public message(n: number): string {
     if (n > 0) return "Eu uso Recursividade\n" + this.message(n - 1);
     return "";
   }
 
-  // CONTAGEM PROGRESSIVA – Dado um inteiro positivo n, realize a contagem progressiva de 1 até n.
   public countRegress(n: number): string {
     if (n > 0) return `${n} \n` + this.countRegress(n - 1);
     return "Fire!";
   }
 
-  // CONTAGEM DE A ATÉ B – dados os inteiros a e b, realize a contagem progressiva de a até b.
-  // Use a mesma classe para os exercícios 4 e 5.
   public countPoints(a: number, b: number): string {
     if (a > b) {
       return "\nFim";
@@ -23,18 +19,11 @@ export default class Recursivity {
     return `${a}\n` + this.countPoints(a + 1, b);
   }
 
-  // SOMA DO INTERVALO – Dados dois números, os limites superior e inferior de um intervalo, retorne
-  // a soma dos inteiros neste intervalo fechado. O limite superior sempre será maior, ou igual, ao inferior
-
   public sumInterval(a: number, b: number): number {
     if (a > b) return 0;
 
     return a + this.sumInterval(a + 1, b);
   }
-
-  //SOMA DO INTERVALO APRIMORADA – Aprimore a resolução anterior para que os limites sejam
-  // invertidos no caso do limite inferior ser maior do que o inferior. Assim, quando for pedido que a função
-  // retorne a soma do intervalo [10, 1], será tratado da mesma forma do que a soma de [1, 10].
 
   public sumIntervaEnhancement(a: number, b: number): number {
     let c: number = 0;
@@ -51,9 +40,6 @@ export default class Recursivity {
     return a + this.sumIntervaEnhancement(a + 1, b);
   }
 
-  // FATORIAL – Dado um inteiro n, retorne n!.
-  // Use a mesma classe para os exercícios 7, 8, 9 e 10.
-
   public factorial(n: number): number {
     if (n === 0 || n === 1) return 1;
 
@@ -61,9 +47,6 @@ export default class Recursivity {
     // fatorial é tipo !4 = 1 * 2 * 3 * 4 que da 24
     // mas a soma é 1 + 2 + 3 + 4 que da 10
   }
-
-  //POTÊNCIA – Dados a base e um expoente positivo, retorne baseexpoente. Assuma o valor de n como
-  // base.
 
   public isPotence(n:number, exp: number): number {
     if(exp === 0){
@@ -78,18 +61,10 @@ export default class Recursivity {
     return n * this.isPotence(n, exp - 1);
   }
 
-  // FIBONACCI – Dado um inteiro positivo n, retorne o n-ésimo termo da série de Fibonacci. Saiba que
-  // os dois primeiros termos desta série são 1 e 1 e os demais são gerados a partir da soma dos
-  // anteriores: 1 1 2 3 5 8 13 21...
-
   public fibonacci(n: number): number{
-    if (n === 1 || n === 2) return 1;
+    if (n === 1 || n === 2) return 1; // Primeiro termo é 1
     return this.fibonacci(n - 1) + this.fibonacci(n - 2);
   }
-
-  // TRIBONACCI – Este exercício é uma mera progressãos do anterior. Dado um inteiro positivo n,
-  // imprima o n-ésimo termo da série de Tribonacci. Saiba que os três primeiros termos desta série são
-  // 1, 1 e 2; e os demais são gerados a partir da soma dos anteriores: 1 1 2 4 7 13 24 44...
 
   public tribonacci(n: number): number {
     if (n === 0) return 0; // O primeirot termo é 0
@@ -97,11 +72,6 @@ export default class Recursivity {
     if (n === 3) return 2; // O terceiro termo é 2
     return this.tribonacci(n - 1) + this.tribonacci(n - 2) + this.tribonacci(n - 3);
   }
-
-  // TETRANACCI – Este exercício é uma mera progressão do anterior (que é uma mera progressão do
-  //     anterior… e isso é recursividade). Dado um inteiro positivo n, imprima o n-ésimo termo da série de
-  //     Tetranacci. Saiba que os quatro primeiros termos desta série são 1, 1, 2 e 4; e os demais são
-  //     gerados a partir da soma dos anteriores: 1 1 2 4 8 15 29 56...
 
   public tetranacci(n: number): number {
     if (n === 0) return 1;    // O primeiro termo é 1
