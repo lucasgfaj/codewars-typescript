@@ -86,13 +86,29 @@ export default class Recursivity {
   //     para os próximos exercícios), não ordenados, retorne a posição da primeira ocorrência do inteiro na
   //     matriz. Caso não haja ocorrência, retorne -1.
 
-  public firstOcorrency(n: number, matriz: number[]) {
-
+  public firstOcorrency(n: number, matriz: number[], index: number = 0): number {
+    if(index >= matriz.length) return -1; 
+  
+    if(matriz[index] === n) return index;
+  
+    return this.firstOcorrency(n, matriz, index + 1);    
   }
   //         PRIMEIRA OCORRÊNCIA ORDENADO – Idem ao anterior, mas suponha que a matriz
   // unidimensional esteja ordenada. Preze pela eficiência.
 
-  public firstOcorrencyOrdered() {}
+  public firstOcorrencyOrdered(n: number, matriz: number[], index: number = 0): number {
+    if(index >= matriz.length) return -1;
+
+    if(matriz[index] === n){
+      if(index === 0 || matriz[index - 1] !== n){
+        return index;
+      } else {
+        return this.firstOcorrencyOrdered(n, matriz, index + 1);
+      }
+    } 
+
+    return this.firstOcorrencyOrdered(n, matriz, index + 1);
+  }
 
   // MAIOR ELEMENTO – Considere a mesma matriz unidimensional, não ordenada. Retorne
   // recursivamente o maior elemento

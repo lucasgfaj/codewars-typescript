@@ -22,8 +22,9 @@ console.log(recursion.tribonacci(4));
 console.log("-");
 console.log(recursion.tetranacci(4));
 console.log("-");
-const matriz = [2, 3, 5, 7, 9, 2, 4, 6, 8, 0, 10, 12, 14, 16, 18, 11, 13, 15, 17, 19];
-console.log(recursion.firstOcorrency(7, matriz))
-
+const matriz = [13, 2, 17, 3, 8, 7, 12, 0, 6, 4, 11, 2, 15, 2, 18, 16, 9, 14, 19, 10];
+console.log(recursion.firstOcorrency(3, matriz)) 
+const matrizOrdered = [1, 2, 3, 4, 5, 6, 8, 10, 11, 13, 12, 14, 16, 15, 17, 18, 19];
+console.log(recursion.firstOcorrencyOrdered(2, matrizOrdered));
 
 
