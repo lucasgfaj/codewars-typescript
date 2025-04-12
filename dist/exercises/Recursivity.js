@@ -78,9 +78,6 @@ class Recursivity {
             return 4; // O quarto termo é 4
         return this.tetranacci(n - 1) + this.tetranacci(n - 2) + this.tetranacci(n - 3) + this.tetranacci(n - 4);
     }
-    // PRIMEIRA OCORRÊNCIA – Dado um inteiro e uma matriz unidimensional de 20 inteiros (convenção
-    //     para os próximos exercícios), não ordenados, retorne a posição da primeira ocorrência do inteiro na
-    //     matriz. Caso não haja ocorrência, retorne -1.
     firstOcorrency(n, matriz, index = 0) {
         if (index >= matriz.length)
             return -1;
@@ -88,26 +85,54 @@ class Recursivity {
             return index;
         return this.firstOcorrency(n, matriz, index + 1);
     }
-    //         PRIMEIRA OCORRÊNCIA ORDENADO – Idem ao anterior, mas suponha que a matriz
-    // unidimensional esteja ordenada. Preze pela eficiência.
-    firstOcorrencyOrdered(n, matriz, index = 0) {
-        if (index >= matriz.length)
+    firstOcorrencyOrdered(n, matriz, index, last) {
+        if (index > last)
             return -1;
-        if (matriz[index] === n)
-            return index;
-        return this.firstOcorrencyOrdered(n, matriz, index + 1);
+        let mid = Math.floor((last + index) / 2);
+        if (matriz[mid] == n) {
+            // Encontra o elemento, porem pode haver outros elementos iguais
+            const leftSearch = this.firstOcorrencyOrdered(n, matriz, index, mid - 1);
+            return (leftSearch != -1) ? leftSearch : mid;
+        }
+        else if (matriz[mid] < n) {
+            // Procura na metade da direita
+            return this.firstOcorrencyOrdered(n, matriz, mid + 1, last);
+        }
+        else {
+            // Procura na metade da esquerda
+            return this.firstOcorrencyOrdered(n, matriz, index, mid - 1);
+        }
     }
-    // MAIOR ELEMENTO – Considere a mesma matriz unidimensional, não ordenada. Retorne
-    // recursivamente o maior elemento
-    biggerElement() { }
-    // SOMA DOS ELEMENTOS – Considere a mesma matriz unidimensional, não ordenada. Retorne
-    // recursivamente soma dos elementos.
-    sumElements() { }
-    // NÚMERO DE OCORRÊNCIAS – Considere a mesma matriz unidimensional, não ordenada. Dado um
-    // inteiro, retorne recursivamente quantas ocorrências deste há na matriz.
-    numbersOcorrencys() { }
+    biggerElement(matriz, i = 0, acc = 0) {
+        if (i >= matriz.length)
+            return acc;
+        if (matriz[i] > acc)
+            acc = matriz[i];
+        return this.biggerElement(matriz, i + 1, acc);
+    }
+    sumElements(matriz, i = 0, sum = 0) {
+        if (i >= matriz.length)
+            return sum;
+        sum += matriz[i];
+        return this.sumElements(matriz, i + 1, sum);
+    }
+    numbersOcorrencys(n, matriz, i = 0, ocorrencys = 0) {
+        if (i >= matriz.length)
+            return ocorrencys;
+        if (matriz[i] === n) {
+            ocorrencys++;
+        }
+        return this.numbersOcorrencys(n, matriz, i + 1, ocorrencys);
+    }
     // ESTÁ ORDENADO – Considere a mesma matriz unidimensional, não ordenada. Retorne se a matriz
     // unidimensional está em ordem crescente. Verifique recursivamente.
-    isOrdered() { }
+    isOrdered(matriz, i = 0, j = 0) {
+        if (i >= matriz.length - 1)
+            return "Ordered";
+        if (matriz[i] > matriz[i + 1]) {
+            return "Not Ordered";
+        }
+        return this.isOrdered(matriz, i + 1, matriz[j + 1]);
+    }
 }
 exports.default = Recursivity;
