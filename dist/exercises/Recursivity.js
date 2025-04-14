@@ -124,15 +124,13 @@ class Recursivity {
         }
         return this.numbersOcorrencys(n, matriz, i + 1, ocorrencys);
     }
-    // ESTÁ ORDENADO – Considere a mesma matriz unidimensional, não ordenada. Retorne se a matriz
-    // unidimensional está em ordem crescente. Verifique recursivamente.
-    isOrdered(matriz, i = 0, j = 0) {
+    isOrdered(matriz, i = 0) {
         if (i >= matriz.length - 1)
             return "Ordered";
         if (matriz[i] > matriz[i + 1]) {
             return "Not Ordered";
         }
-        return this.isOrdered(matriz, i + 1, matriz[j + 1]);
+        return this.isOrdered(matriz, i + 1);
     }
 }
 exports.default = Recursivity;
