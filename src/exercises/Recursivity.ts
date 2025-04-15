@@ -42,10 +42,9 @@ export default class Recursivity {
 
   public factorial(n: number): number {
     if (n === 0 || n === 1) return 1;
-
+    
     return n * this.factorial(n - 1);
     // fatorial é tipo !4 = 1 * 2 * 3 * 4 que da 24
-    // mas a soma é 1 + 2 + 3 + 4 que da 10
   }
 
   public isPotence(n:number, exp: number): number {
@@ -81,9 +80,6 @@ export default class Recursivity {
     return this.tetranacci(n - 1) + this.tetranacci(n - 2) + this.tetranacci(n - 3) + this.tetranacci(n - 4); 
   }
   
-
-
-
   public firstOcorrency(n: number, matriz: number[], index: number = 0): number {
     if(index >= matriz.length) return -1; 
   
@@ -148,4 +144,10 @@ export default class Recursivity {
     return this.isOrdered(matriz, i + 1);
   
   }
+
+   public sumDigits(n: number): number {
+    if(n === 0) return 0;
+    return (n % 10) + this.sumDigits(Math.floor(n / 10));
+  }
+    
 }

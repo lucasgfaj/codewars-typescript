@@ -39,7 +39,6 @@ class Recursivity {
             return 1;
         return n * this.factorial(n - 1);
         // fatorial é tipo !4 = 1 * 2 * 3 * 4 que da 24
-        // mas a soma é 1 + 2 + 3 + 4 que da 10
     }
     isPotence(n, exp) {
         if (exp === 0) {
@@ -131,6 +130,11 @@ class Recursivity {
             return "Not Ordered";
         }
         return this.isOrdered(matriz, i + 1);
+    }
+    sumDigits(n) {
+        if (n === 0)
+            return 0;
+        return (n % 10) + this.sumDigits(Math.floor(n / 10));
     }
 }
 exports.default = Recursivity;

@@ -35,5 +35,7 @@ console.log("-");
 console.log(recursion.sumElements(matriz));
 console.log("-");
 console.log(recursion.numbersOcorrencys(2, matriz));
+console.log("-");
 console.log(recursion.isOrdered(matriz));
-
+console.log("-");
+console.log(recursion.sumDigits(99));
