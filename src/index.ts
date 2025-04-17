@@ -8,7 +8,7 @@ console.log(recursion.countRegress(3))
 console.log("-");
 console.log(recursion.countPoints(1, 5));
 console.log("-");
-console.log(recursion.sumInterval(1, 5));
+console.log(recursion.sumInterval(1, 10));
 console.log("-");
 console.log(recursion.sumIntervaEnhancement(5, 1));
 console.log("-");

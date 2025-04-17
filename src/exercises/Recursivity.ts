@@ -21,7 +21,6 @@ export default class Recursivity {
 
   public sumInterval(a: number, b: number): number {
     if (a > b) return 0;
-
     return a + this.sumInterval(a + 1, b);
   }
 
@@ -150,4 +149,49 @@ export default class Recursivity {
     return (n % 10) + this.sumDigits(Math.floor(n / 10));
   }
     
+}
+
+
+
+export class Fatorial {
+  private n: number;
+
+  constructor(n: number){
+      this.n = Math.abs(n)
+  }
+  
+  public getN(): number{
+      return this.n;
+  }
+
+  public setN(n: number): void{
+      this.n = n;
+  }
+
+  //get() e set()
+
+  public fatorial (): number {
+      return this.fatorialAux(this.n);
+  }
+
+  private fatorialAux(x: number): number {
+      if (x <  2) return 1;
+
+      return x * this.fatorialAux(x - 1)
+  }
+
+  public potencia(expoente: number): number{
+    expoente = Math.abs(expoente);
+
+    if(expoente == 0){
+      return 1
+    }
+
+    if(expoente < 2){
+      return this.n
+    }
+
+    return this.n * this.potencia(expoente -1);
+  }
+  
 }
