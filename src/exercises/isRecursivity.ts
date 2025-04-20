@@ -94,7 +94,7 @@ export class RecursivityisAB {
     }
 }
 
-export class RecursivityN {
+export class RecursivityNacci {
     private n: number
 
     constructor(n: number) {
@@ -130,12 +130,13 @@ export class RecursivityN {
     public fibonacci(): number {
         return this.fibonacciAux(this.n);
     }
-
+    
     private fibonacciAux(n: number): number {
-        if (n === 1 || n === 2) return 1;
-
+        if (n === 0) return 0;
+        if (n === 1) return 1;
         return this.fibonacciAux(n - 1) + this.fibonacciAux(n - 2);
     }
+    
 
     public tribonacci(): number {
         return this.tribonacciAux(this.n);
@@ -154,13 +155,12 @@ export class RecursivityN {
     }
 
     private tetranacciAux(n: number): number {
-        if (n === 0 || n === 1)   return 1;
-        if (n === 2) return 2;
-        if (n === 3) return 4;
-
+        if (n === 0) return 0;
+        if (n === 1 || n === 2) return 1;
+        if (n === 3) return 2;
         return this.tetranacciAux(n - 1) + this.tetranacciAux(n - 2) + this.tetranacciAux(n - 3) + this.tetranacciAux(n - 4);
-
     }
+    
 
 }
 

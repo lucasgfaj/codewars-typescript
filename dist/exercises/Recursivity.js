@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Fatorial = void 0;
 class Recursivity {
     constructor() { }
     message(n) {
@@ -138,3 +139,34 @@ class Recursivity {
     }
 }
 exports.default = Recursivity;
+class Fatorial {
+    constructor(n) {
+        this.n = Math.abs(n);
+    }
+    getN() {
+        return this.n;
+    }
+    setN(n) {
+        this.n = n;
+    }
+    //get() e set()
+    fatorial() {
+        return this.fatorialAux(this.n);
+    }
+    fatorialAux(x) {
+        if (x < 2)
+            return 1;
+        return x * this.fatorialAux(x - 1);
+    }
+    potencia(expoente) {
+        expoente = Math.abs(expoente);
+        if (expoente == 0) {
+            return 1;
+        }
+        if (expoente < 2) {
+            return this.n;
+        }
+        return this.n * this.potencia(expoente - 1);
+    }
+}
+exports.Fatorial = Fatorial;
