@@ -1,6 +1,7 @@
 export default class Recursivity {
   constructor() {}
 
+  // MENSAGEM – Implemente um método que exiba n vezes uma mensagem na tela
   public message(n: number): string {
     if (n > 0) return "Eu uso Recursividade\n" + this.message(n - 1);
     return "";
@@ -195,3 +196,5 @@ export class Fatorial {
   }
   
 }
+
+

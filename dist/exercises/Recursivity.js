@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Fatorial = void 0;
 class Recursivity {
     constructor() { }
+    // MENSAGEM – Implemente um método que exiba n vezes uma mensagem na tela
     message(n) {
         if (n > 0)
             return "Eu uso Recursividade\n" + this.message(n - 1);
