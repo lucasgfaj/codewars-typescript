@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Ordenation_1 = require("./exercises/Ordenation");
-const ex1 = new Ordenation_1.OrdenationThree(5, 5, 3);
+const ex1 = new Ordenation_1.OrdenationThree(1, 5, 3);
 console.log(ex1.orderThree());
 console.log(ex1.biggerThree());
+const baralho = new Ordenation_1.sortCheap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+const resultado = baralho.selecitionSort();
+console.log("Comparações:", resultado.comparison);
+console.log("Trocas:", resultado.swap);

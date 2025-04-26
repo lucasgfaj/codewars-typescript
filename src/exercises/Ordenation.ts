@@ -64,3 +64,26 @@ export class OrdenationThree{
         }
 }
 
+export class sortCheap  {
+    private arr: number[];
+
+    constructor(arr: number[]){
+        this.arr = arr;
+    }
+
+    public getArr(): number[]{
+        return this.arr;
+    }
+
+    public setArr(arr: number[]): void {
+        this.arr = arr;
+    }
+
+
+    public selectionSort(): void {}
+    
+    public bubbleSort(): void {}
+
+    public insertionSort(): void {}
+
+}
