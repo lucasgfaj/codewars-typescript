@@ -1,6 +1,6 @@
-import { OrdenationThree, sortCheap } from "./exercises/Ordenation";
+import { sortThree, sortCheap } from "./exercises/Ordenation";
 
-const ex1 = new OrdenationThree(1, 5, 3)
+const ex1 = new sortThree(1, 5, 3)
 
 console.log(ex1.orderThree());
 console.log(ex1.biggerThree());

@@ -1,4 +1,4 @@
-export class OrdenationThree{
+export class sortThree{
     private a;
     private b;
     private c;
