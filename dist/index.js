@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Ordenation_1 = require("./exercises/Ordenation");
-const ex1 = new Ordenation_1.OrdenationThree(1, 5, 3);
+const Sort_1 = require("./exercises/Sort");
+const ex1 = new Sort_1.sortThree(1, 5, 3);
 console.log(ex1.orderThree());
 console.log(ex1.biggerThree());
-const baralho = new Ordenation_1.sortCheap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
-const resultado = baralho.selecitionSort();
-console.log("Comparações:", resultado.comparison);
-console.log("Trocas:", resultado.swap);
+const cheap1 = new Sort_1.sortCheap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+const cheap2 = new Sort_1.sortCheap([10, 1, 9, 2, 8, 3, 7, 4, 6, 5]);
+const cheap3 = new Sort_1.sortCheap([4, 5, 6, 1, 2, 3, 7, 8, 9, 10]);
+console.log(cheap1.selectionSort());
+console.log(cheap2.bubbleSort());
+console.log(cheap3.insertionSort());
