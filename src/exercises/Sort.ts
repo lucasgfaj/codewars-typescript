@@ -1,4 +1,4 @@
-export class sortThree {
+export class SortThree {
     private a;
     private b;
     private c;
@@ -64,7 +64,7 @@ export class sortThree {
     }
 }
 
-export class sortCheap {
+export class SortCheap {
     private arr: number[];
 
     constructor(arr: number[]) {
@@ -136,4 +136,38 @@ export class sortCheap {
         return `Insertion Sort in ${compare} comparisons and ${swap} swaps.`;
     }
 
+    public isOrdered(): boolean {
+        for (let i = 0; i < this.arr.length - 1; i++){
+            if (this.arr[i] > this.arr[i + 1])
+                return false
+        }
+        return true
+    }
+
+    public bubbleSortUpdate(): string {
+        let arr: number[] = this.arr;
+        let compare = 0;
+        let swap = 0;
+        let n = arr.length;
+    
+        for (let i = 0; i < n - 1; i++) {
+            let swapped = false; // Flag para verificar se houve troca
+    
+            for (let j = 0; j < n - 1 - i; j++) {
+                compare++;
+                if (arr[j] > arr[j + 1]) {
+                    [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                    swap++;
+                    swapped = true; // Se houve troca, marca
+                }
+            }
+    
+            // Se não houve troca, array já está ordenado
+            if (!swapped) {
+                break;
+            }
+        }
+    
+        return `Bubble Sort in ${compare} comparisons and ${swap} swaps.`;
+    }
 }

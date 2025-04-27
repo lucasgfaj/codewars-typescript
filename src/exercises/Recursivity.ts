@@ -39,4 +39,10 @@ export default class Recursivity {
     if (i >= length) return '';
     return str[length - i - 1] + this.reverseAux3(str, i + 1)
   }
+
+  private revereseAux4(str: string, i: number = this.str.length - 1): string {
+    if (i < 0) return '';
+    return str[i] + this.revereseAux4(str, i - 1);
+  }
 }
+

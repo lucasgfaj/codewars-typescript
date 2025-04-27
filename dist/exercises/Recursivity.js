@@ -30,5 +30,10 @@ class Recursivity {
             return '';
         return str[length - i - 1] + this.reverseAux3(str, i + 1);
     }
+    revereseAux4(str, i = this.str.length - 1) {
+        if (i < 0)
+            return '';
+        return str[i] + this.revereseAux4(str, i - 1);
+    }
 }
 exports.default = Recursivity;
