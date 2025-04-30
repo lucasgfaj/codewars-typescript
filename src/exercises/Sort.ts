@@ -238,5 +238,114 @@ export class UnidimensionalArray {
         return shuffleArr;
     }
 
+
+    // Explicação: https://www.youtube.com/watch?v=9cIjvXEeOhQ
+
+    // Gnomo ve se o 0 1 3 2 
+    // ai ele andar e verifica se o 1 é maior que 0 se sim, ele anda para frente
+    // ai chega no caso ele verifica se 2 é maior que ze
+    public gnomeSort(): number[] {
+        let sortArr: number[] = [...this.arr]; // faz copia do array
+        let i = 0;
+
+        while( i < sortArr.length){
+            if(i === 0 || sortArr[i] >= sortArr[i - 1]){
+                i++;
+            } else {
+                [sortArr[i], sortArr[i - 1]] = [sortArr[i - 1], sortArr[i]]; 
+                i--;
+            }
+        }
+        return sortArr;
+    }
+
+    public selectSortRecursive(): number[] {
+        return this.selectSortRecursiveAux(this.arr);
+    }
+
+    private selectSortRecursiveAux(arrSort: number[], i: number = 0): number[]{
+
+        return this.selectSortRecursiveAux(arrSort, i);
+    }
+
+    public selectionSortImproved(): string {
+        let sortArr: number[] = this.arr;
+        let compare: number = 0;
+        let swap: number = 0;
+
+        for (let i = 0; i < sortArr.length - 1; i++) {
+            let pos = i;
+            for (let j = i + 1; j < sortArr.length; j++) {
+                compare++
+                if (sortArr[pos] > sortArr[j]) {
+                    pos = j;
+                }
+            }
+            if (pos != i) {
+                swap++
+                [sortArr[i], sortArr[pos]] = [sortArr[pos], sortArr[i]];
+            }
+        }
+
+        return `${sortArr} compare: ${compare}, swap: ${swap}`;
+    }
+
+
+    
+
 }
 
+
+export class Bingo {
+    readonly TAM: number = 25;
+    private arr: number[] = [];
+    
+    public constructor(arr: number[]){
+        this.generateNumbers();
+    }
+
+    private generateNumbers(): void {
+        const numbers: Set<number> = new Set();
+
+        while (numbers.size < this.TAM) {
+            let num = Math.floor(Math.random() * 50) + 1;
+            numbers.add(num);
+        }
+
+        this.arr = Array.from(numbers);
+    }
+
+    private generateBingo(): number[][]{
+        let bingo = this.arr;
+        let columns = 5;
+        let arr: number[][] = [];
+
+        for(let i = 0; i < this.TAM; i++){
+            let lineIndex = Math.floor(i / columns);
+
+            if(!arr[lineIndex]){
+                arr[lineIndex] = [];
+            }
+
+            arr[lineIndex].push(bingo[i]);
+        }
+        return arr;
+    }
+
+    public toString(): string{
+        let returnBingo: string = "";
+        let bingoString: string[] = ["B","I","N","G","O"];
+        let bingo = this.generateBingo();
+        
+        returnBingo += bingoString.join("  ") + "\n";
+
+        for(let i = 0; i < bingo.length; i++){
+            for(let j = 0; j < bingo[i].length; j++){
+                returnBingo += bingo[i][j].toString().padStart(2, " ") + " ";
+            }
+            returnBingo += "\n";
+        }
+        
+       return returnBingo 
+    }
+}
