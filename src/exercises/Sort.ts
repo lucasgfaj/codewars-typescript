@@ -179,7 +179,7 @@ export class SortCheap {
             for(let j = 0; j < sortArr.length - i - 1; j++){
                 compare++;
                 if(sortArr[j] > sortArr[j + 1]){
-                    [sortArr[j], sortArr[j + 1]]  [sortArr[j + 1], sortArr[j]];
+                    [sortArr[j], sortArr[j + 1]] = [sortArr[j + 1], sortArr[j]];
                     swap++;
                 }
             }
@@ -197,7 +197,7 @@ export class SortCheap {
             for(let j = 0; j < sortArr.length - i - 1; j++){
                 compare++;
                 if(sortArr[j] > sortArr[j + 1]){
-                    [sortArr[j], sortArr[j + 1]]  [sortArr[j + 1], sortArr[j]];
+                    [sortArr[j], sortArr[j + 1]] = [sortArr[j + 1], sortArr[j]];
                     swapped = true;
                     swap++;
                 }
@@ -228,7 +228,13 @@ export class UnidimensionalArray {
     public shuffle(): number[] {
         let shuffleArr: number[] = this.arr;
 
+        for(let i = 0; i < shuffleArr.length; i++){
+            let randomIndex = Math.floor(Math.random() * shuffleArr.length);
 
+            let temp = shuffleArr[i];
+            shuffleArr[i] = shuffleArr[randomIndex];
+            shuffleArr[randomIndex] = temp;
+        }
         return shuffleArr;
     }
 
