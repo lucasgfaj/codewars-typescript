@@ -260,39 +260,61 @@ export class UnidimensionalArray {
     }
 
     public selectSortRecursive(): number[] {
-        return this.selectSortRecursiveAux(this.arr);
+        return this.selectionSortRecursiveAux(this.arr);
     }
 
-    private selectSortRecursiveAux(arrSort: number[], i: number = 0): number[]{
-
-        return this.selectSortRecursiveAux(arrSort, i);
-    }
-
-    public selectionSortImproved(): string {
-        let sortArr: number[] = this.arr;
-        let compare: number = 0;
-        let swap: number = 0;
-
-        for (let i = 0; i < sortArr.length - 1; i++) {
-            let pos = i;
-            for (let j = i + 1; j < sortArr.length; j++) {
-                compare++
-                if (sortArr[pos] > sortArr[j]) {
-                    pos = j;
-                }
+    private selectionSortRecursiveAux(arr: number[], i: number = 0, j: number = i + 1, minIndex: number = i): number[] {
+        if (i >= arr.length - 1) return arr; // Caso base: array ordenado
+    
+        if (j < arr.length) {
+            if (arr[j] < arr[minIndex]) {
+                minIndex = j;
             }
-            if (pos != i) {
-                swap++
-                [sortArr[i], sortArr[pos]] = [sortArr[pos], sortArr[i]];
+            return this.selectionSortRecursiveAux(arr, i, j + 1, minIndex); // continua procurando o menor
+        } else {
+            if (minIndex !== i) {
+                [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+            }
+            return this.selectionSortRecursiveAux(arr, i + 1); // passa para a próxima posição
+        }
+    }
+    
+    public extremeNext(n: number): number {
+    // Garante que o array está ordenado em ordem crescente
+    const arr = [...this.arr].sort((a, b) => a - b);
+    let pos = -1;
+
+    // Verificação de faixa válida (x deve estar entre o menor e o maior elemento)
+    if (n < arr[0] || n > arr[arr.length - 1]) return -1;
+
+    // Decide a extremidade mais próxima
+    const fromStart = Math.abs(n - arr[0]);
+    const fromEnd = Math.abs(n - arr[arr.length - 1]);
+
+    if (fromStart <= fromEnd) {
+        // Busca sequencial do início
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > n) break; // já passou do número, pode parar
+            if (arr[i] === n) {
+                pos = i;
+                break;
             }
         }
-
-        return `${sortArr} compare: ${compare}, swap: ${swap}`;
+    } else {
+        // Busca sequencial do final
+        for (let i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] < n) break; // já passou do número ao voltar
+            if (arr[i] === n) {
+                pos = i;
+                break;
+            }
+        }
     }
 
+    return pos;
+}
 
     
-
 }
 
 

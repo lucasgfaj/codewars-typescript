@@ -16,3 +16,4 @@ console.log(ordered.isGrowing());
 console.log(ordered.shuffle());
 console.log(ordered.gnomeSort());
 console.log(bingo.toString());
+console.log(ordered.extremeNext(3));
