@@ -316,55 +316,54 @@ export class UnidimensionalArray {
   }
 }
 
-
 export class megaSena {
-    private arr: number[];
-  
-    public constructor(arr: number[]) {
-      if (arr.length < 6 || arr.length > 20) {
-        throw new Error("Aposta deve conter entre 6 e 20 números.");
-      }
-      this.arr = arr;
+  private arr: number[];
+
+  public constructor(arr: number[]) {
+    if (arr.length < 6 || arr.length > 20) {
+      throw new Error("Aposta deve conter entre 6 e 20 números.");
     }
-  
-    public getArr(): number[] {
-      return this.arr;
+    this.arr = arr;
+  }
+
+  public getArr(): number[] {
+    return this.arr;
+  }
+
+  public setArr(arr: number[]): void {
+    if (arr.length < 6 || arr.length > 20) {
+      throw new Error("Aposta deve conter entre 6 e 20 números.");
     }
-  
-    public setArr(arr: number[]): void {
-      if (arr.length < 6 || arr.length > 20) {
-        throw new Error("Aposta deve conter entre 6 e 20 números.");
+    this.arr = arr;
+  }
+
+  private megaSena(sena: number[]): number {
+    let hits = 0;
+
+    for (let i = 0; i < sena.length; i++) {
+      if (sena[i] === this.arr[i]) {
+        hits++;
       }
-      this.arr = arr;
     }
-  
-    private megaSena(sena: number[]): number {
-      let hits = 0;
-  
-      for (let i = 0; i < sena.length; i++) {
-        if (sena[i] === this.arr[i]) {
-          hits++;
-        }
-      }
-      return hits;
-    }
-  
-    public megaSenaSort(sena: number[]): string {
-      const hits = this.megaSena(sena);
-  
-      switch (hits) {
-        case 6:
-          return `sena`;
-        case 5:
-          return "quina";
-        case 4:
-          return "quadra";
-        default:
-          return "não premiado";
-      }
+    return hits;
+  }
+
+  public megaSenaSort(sena: number[]): string {
+    const hits = this.megaSena(sena);
+
+    switch (hits) {
+      case 6:
+        return `sena`;
+      case 5:
+        return "quina";
+      case 4:
+        return "quadra";
+      default:
+        return "não premiado";
     }
   }
-  
+}
+
 export class Bingo {
   readonly TAM: number = 25;
   private arr: number[] = [];
@@ -416,5 +415,114 @@ export class Bingo {
     }
 
     return returnBingo;
+  }
+}
+
+export class SearchBinary {
+  private arr: number[];
+
+  public constructor(arr: number[]) {
+    this.arr = arr;
+  }
+
+  public getArr(): number[] {
+    return this.arr;
+  }
+
+  public setArr(arr: number[]): void {
+    this.arr = arr;
+  }
+
+  public searchBinary(n: number): number {
+    let arrOrdened = [...this.arr];
+    let low = 0;
+    let high = arrOrdened.length - 1;
+
+    if (n < arrOrdened[0] || n > arrOrdened[arrOrdened.length - 1]) {
+      return -1;
+    }
+
+    for (let i = 0; low <= high; i++) {
+      let mid = Math.floor((low + high) / 2);
+
+      if (arrOrdened[mid] === n) {
+        return mid;
+      } else if (arrOrdened[mid] < n) {
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+    return -1;
+  }
+}
+
+export class Sudoku {
+  private arr: number[][];
+
+  public constructor(arr: number[][]) {
+    this.arr = arr;
+  }
+
+  public getArr(): number[][] {
+    return this.arr;
+  }
+
+  public setArr(arr: number[][]): void {
+    this.arr = arr;
+  }
+
+  public sudokuGame(): number[][] {
+    const array = [...this.arr];
+    this.resolverSudoku(array);
+    this.imprimirSudoku(array);
+    return array;
+  }
+
+  private resolverSudoku(array: number[][]): boolean {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        if (array[i][j] === 0) {
+          for (let num = 1; num <= 9; num++) {
+            if (this.isValid(array, num, i, j)) {
+              array[i][j] = num;
+
+              if (this.resolverSudoku(array)) return true;
+
+              array[i][j] = 0;
+            }
+          }
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  private isValid(arr: number[][], num: number, i: number, j: number): boolean {
+    for (let x = 0; x < 9; x++) {
+      if (arr[i][x] === num) return false;
+    }
+
+    for (let y = 0; y < 9; y++) {
+      if (arr[y][j] === num) return false;
+    }
+
+    const startRow = Math.floor(i / 3) * 3;
+    const startCol = Math.floor(j / 3) * 3;
+
+    for (let a = 0; a < 3; a++) {
+      for (let b = 0; b < 3; b++) {
+        if (arr[startRow + a][startCol + b] === num) return false;
+      }
+    }
+    return true;
+  }
+
+  private imprimirSudoku(matriz: number[][]): void {
+    console.log("\nSolução do Sudoku:\n");
+    for (let i = 0; i < 9; i++) {
+      console.log(matriz[i].join(" "));
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { SortThree, SortCheap, UnidimensionalArray, Bingo } from "./exercises/Sort";
+import { SortThree, SortCheap, UnidimensionalArray, Bingo, SearchBinary, Sudoku } from "./exercises/Sort";
 
 // const ex1 = new SortThree(5, 20, 10)
 
@@ -19,3 +19,22 @@ console.log(ordered.gnomeSort());
 
 console.log(bingo.toString());
 console.log(ordered.extremeNext(3));
+const binary = new SearchBinary([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]);
+
+console.log(binary.searchBinary(18));
+
+const mSudoku = new Sudoku([
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+]);
+
+console.log(mSudoku.sudokuGame());
