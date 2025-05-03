@@ -28,15 +28,15 @@ export class SortThree {
   }
 
   public sortThreeMax(): number[] {
-    let x: number = this.a;
-    let y: number = this.b;
-    let z: number = this.c;
+    let a: number = this.a;
+    let b: number = this.b;
+    let c: number = this.c;
 
-    if (x > y) [x, y] = [y, x];
-    if (y > z) [y, z] = [z, y];
-    if (y > x) [y, x] = [x, y];
+    if (a > b) [a, b] = [b, a];
+    if (b > c) [b, c] = [c, b];
+    if (b > a) [b, a] = [a, b];
 
-    return [x, y, z];
+    return [a, b, c];
   }
 
   public biggerThree(): number {
@@ -353,7 +353,7 @@ export class megaSena {
 
     switch (hits) {
       case 6:
-        return `sena`;
+        return "sena";
       case 5:
         return "quina";
       case 4:
@@ -434,7 +434,7 @@ export class SearchBinary {
   }
 
   public searchBinary(n: number): number {
-    let arrOrdened = [...this.arr];
+    let arrOrdened = [...this.arr].sort((a, b) => a - b);
     let low = 0;
     let high = arrOrdened.length - 1;
 
@@ -479,8 +479,8 @@ export class SearchBinary {
         high = mid - 1;
       }
     }
-    if(arr[0] !== arr[1]) return arr[0]
-    if(arr[arr.length - 1] !== arr[arr.length -2]) return arr[arr.length -1]
+    if(arr[0] !== arr[1]) return arr[0];
+    if(arr[arr.length - 1] !== arr[arr.length -2]) return arr[arr.length -1];
     return -1;
 }
 
