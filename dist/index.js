@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const Exame_1 = require("./exercises/Exame");
 const Sort_1 = require("./exercises/Sort");
 // const ex1 = new SortThree(5, 20, 10)
 // console.log(ex1.sortThreeMax());
@@ -31,3 +32,15 @@ const mSudoku = new Sort_1.Sudoku([
     [0, 0, 0, 0, 8, 0, 0, 7, 9]
 ]);
 console.log(mSudoku.sudokuGame());
+console.log(binary.findUniqWithFor([0, 0, 0.55, 0, 0]));
+console.log(binary.findUniqWithWhile([1, 1, 1, 2, 1, 1]));
+const numeros = [5, 2, 9, 1, 5, 6];
+const exame = new Exame_1.Exame(numeros);
+console.log("Array original:", exame.getArr());
+console.log("Selection Sort:", exame.selectionSort());
+console.log("Insertion Sort:", exame.insertionSort());
+console.log("Bubble Sort:", exame.bubbleSort());
+console.log("Busca Sequencial (procurando 9):", exame.sequencySearch(9));
+console.log("Busca Sequencial (procurando 100):", exame.sequencySearch(100));
+console.log("Busca Binária (procurando 5):", exame.binarySearch(5));
+console.log("Busca Binária (procurando 0):", exame.binarySearch(0));

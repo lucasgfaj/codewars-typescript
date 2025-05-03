@@ -40,7 +40,7 @@ export class SortThree {
   }
 
   public biggerThree(): number {
-    if (this.a > this.b && this.a > this.c) return this.c;
+    if (this.a > this.b && this.a > this.c) return this.a;
 
     if (this.b > this.a && this.b > this.c) return this.b;
 
@@ -455,8 +455,61 @@ export class SearchBinary {
     }
     return -1;
   }
+
+  public findUniqWithFor(arr: number[]): number {
+
+    arr.sort((a, b) => a - b);
+
+    let low = 0;
+    let high = arr.length -1;
+
+    for(let i = 0; low <= high; i++){
+      let mid = Math.floor((low + high) / 2);
+
+      const left = arr[mid - 1];
+      const right = arr[mid + 1];
+
+      if(arr[mid] !== left && arr[mid] !== right){
+        return arr[mid];
+      }
+
+      if(arr[mid] === left){
+        low = mid + 1;
+      } else {
+        high = mid - 1;
+      }
+    }
+    if(arr[0] !== arr[1]) return arr[0]
+    if(arr[arr.length - 1] !== arr[arr.length -2]) return arr[arr.length -1]
+    return -1;
 }
 
+public findUniqWithWhile(arr: number[]): number {
+  arr.sort((a, b) => a - b); // necessário para usar busca binária
+
+  let low = 0;
+  let high = arr.length - 1;
+
+  while (low < high) {
+    let mid = Math.floor((low + high) / 2);
+
+    // se mid é igual ao da esquerda, o diferente está à direita
+    if (arr[mid] === arr[low]) {
+      low = mid + 1;
+    } else if (arr[mid] === arr[high]) {
+      high = mid - 1;
+    } else {
+      // se mid é diferente de ambos, ele é o único
+      return arr[mid];
+    }
+  }
+
+  if(arr[0] !== arr[1]) return arr[0];
+  if(arr[arr.length - 1] !== arr[arr.length - 2]) return arr[arr.length - 1];
+  return -1; // o único elemento diferente
+}
+
+}
 export class Sudoku {
   private arr: number[][];
 

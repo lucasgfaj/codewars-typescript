@@ -1,4 +1,5 @@
-import { SortThree, SortCheap, UnidimensionalArray, Bingo, SearchBinary, Sudoku } from "./exercises/Sort";
+import { Exame } from "./exercises/Exame";
+import { SortThree, SortCheap, UnidimensionalArray, Bingo, SearchBinary, Sudoku,  } from "./exercises/Sort";
 
 // const ex1 = new SortThree(5, 20, 10)
 
@@ -38,3 +39,21 @@ const mSudoku = new Sudoku([
 ]);
 
 console.log(mSudoku.sudokuGame());
+
+
+console.log(binary.findUniqWithFor([ 0, 0, 0.55, 0, 0 ]));
+console.log(binary.findUniqWithWhile([ 1, 1, 1, 2, 1, 1 ]))
+
+const numeros = [5, 2, 9, 1, 5, 6];
+const exame = new Exame(numeros);
+
+console.log("Array original:", exame.getArr());
+console.log("Selection Sort:", exame.selectionSort());
+console.log("Insertion Sort:", exame.insertionSort());
+console.log("Bubble Sort:", exame.bubbleSort());
+
+console.log("Busca Sequencial (procurando 9):", exame.sequencySearch(9));
+console.log("Busca Sequencial (procurando 100):", exame.sequencySearch(100));
+
+console.log("Busca Binária (procurando 5):", exame.binarySearch(5));
+console.log("Busca Binária (procurando 0):", exame.binarySearch(0));
