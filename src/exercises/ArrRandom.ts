@@ -110,19 +110,44 @@ private reverseAux(arr: number[], index: number, result: number[]): number[] {
     return this.reverseAux(arr, index - 1, result);
 }
 
-public reverseWithFor(){
+public reverseWithFor(): number[]{
     let auxReverse: number[] = [];
     let arr: number[] = [...this.arr];
 
     for(let i = arr.length -1; i > -1; i--){
         auxReverse.push(arr[i]);
     }
+    return auxReverse;
 }
 
-public amplitude(){
+public amplitude(): number {
     const arr: number[] = [...this.arr];
     arr.sort((a, b) => a - b);
     return Math.abs(arr[0] - arr[arr.length -1]);
+}
+
+public josephus(): number {
+    const arr: number[] = [...this.arr]
+    
+    let currentIndex = Math.floor(Math.random() * arr.length);
+
+    let currentCount = arr[currentIndex];
+
+    while(arr.length > 1){
+
+        const eliminationIndex = (currentIndex + currentCount) % arr.length;
+
+        const eliminatedNumber = arr[eliminationIndex];
+
+        arr.splice(eliminationIndex, 1);
+    
+        currentCount = eliminatedNumber;
+
+        currentIndex = eliminationIndex % arr.length;
+
+    } 
+    return arr[0];
+
 }
 
 }
