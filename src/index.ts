@@ -12,3 +12,8 @@ const randomArr = new ArrayRandom(10);
 console.log(randomArr.toString());
 console.log(randomArr.cutValue(30));
 console.log(randomArr.removeMultiples(6));
+console.log(randomArr.nextMedia());
+console.log(randomArr.reduce(3));
+console.log(randomArr.slice(0, 3));
+console.log(randomArr.reverse());
+console.log(randomArr.amplitude());

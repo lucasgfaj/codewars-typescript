@@ -53,12 +53,76 @@ export default class ArrayRandom{
         return arr
     }
 
-    public nextMedia(): number {
-        const arr = [...this.arr];
-        let n: number = 0;
+  public nextMedia(): number {
+    const arr = [...this.arr];
+    let sum = 0;
 
-        
-    
-        return n;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
     }
+
+    const med = sum / arr.length;
+
+    let nextMedia = arr[0];
+    let minorDifference = Math.abs(arr[0] - med);
+
+    for (let i = 1; i < arr.length; i++) {
+        const dif = Math.abs(arr[i] - med);
+        if (dif < minorDifference) {
+            minorDifference = dif;
+            nextMedia = arr[i];
+        }
+    }
+
+    return nextMedia;
+}
+
+public reduce(n: number): number[] {
+    const arr: number[] = [...this.arr];
+
+    for(let i = arr.length; arr.length > n; i--){
+        arr.pop();
+    }
+
+    return arr;
+}
+
+public slice(init: number, end: number): number[]{
+    const arr: number[] = [...this.arr];
+    const slice: number[] = [];
+    for(let i = 0; i < arr.length; i++){
+        if(init >= i && i <= end){
+            slice.push(arr[i]);
+        }
+    }
+    return slice
+}
+
+public reverse(): number[] {
+    const arr: number[] = [...this.arr]; 
+    return this.reverseAux(arr, arr.length - 1, []);
+}
+
+private reverseAux(arr: number[], index: number, result: number[]): number[] {
+    if (index < 0) return result;
+    
+    result.push(arr[index]);
+    return this.reverseAux(arr, index - 1, result);
+}
+
+public reverseWithFor(){
+    let auxReverse: number[] = [];
+    let arr: number[] = [...this.arr];
+
+    for(let i = arr.length -1; i > -1; i--){
+        auxReverse.push(arr[i]);
+    }
+}
+
+public amplitude(){
+    const arr: number[] = [...this.arr];
+    arr.sort((a, b) => a - b);
+    return Math.abs(arr[0] - arr[arr.length -1]);
+}
+
 }

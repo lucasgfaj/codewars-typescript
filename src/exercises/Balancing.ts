@@ -1,51 +1,39 @@
 export default class Balancing {
-    // Atributo privado que armazena a expressão matemática como string
     private expressionString: string;
 
-    // Construtor que recebe a expressão e armazena no atributo da classe
     public constructor(expressionString: string) {
         this.expressionString = expressionString;
     }
 
-    // Getter: retorna a expressão armazenada
     public getExpressionString(): string {
         return this.expressionString;
     }
 
-    // Setter: permite atualizar a expressão armazenada
     public setExpressionString(expressionString: string): void {
         this.expressionString = expressionString;
     }
 
-    // Método principal que verifica se a expressão está balanceada
     public isBalancing(): boolean {
-        const stack: string[] = []; // Inicializa uma pilha vazia (array de strings)
+        const stack: string[] = []; 
 
-        // Percorre cada caractere da expressão
         for (let i = 0; i < this.expressionString.length; i++) {
-            const char = this.expressionString[i]; // Pega o caractere atual
+            const char = this.expressionString[i];
 
-            // Se for um símbolo de abertura, empilha
             if (char === '{' || char === '[' || char === '(') {
                 stack.push(char);
             }
 
-            // Se for um símbolo de fechamento, verifica se casa com o topo da pilha
             else if (char === '}' || char === ']' || char === ')') {
-                const last = stack.pop(); // Remove o último símbolo de abertura
-
-                // Se não houver correspondência adequada, retorna falso
+                const last = stack.pop(); 
                 if (
                     (char === ')' && last !== '(') ||
                     (char === ']' && last !== '[') ||
                     (char === '}' && last !== '{')
                 ) {
-                    return false; // Desbalanceado
+                    return false;
                 }
             }
         }
-
-        // Se ao final da leitura a pilha estiver vazia, a expressão está balanceada
         return stack.length === 0;
     }
 }
