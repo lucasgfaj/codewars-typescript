@@ -120,3 +120,83 @@ lista.inserirInicio(50);
 lista.inserirNaPosicao(1, 75);
 
 console.log("Lista:", lista.listar()); // [50, 75, 100]
+
+
+// 🔗 Lista Encadeada Simples
+class No {
+  public valor: number;
+  public proximo: No | null;
+
+  constructor(valor: number) {
+    this.valor = valor;
+    this.proximo = null;
+  }
+}
+
+export class ListaEncadeada {
+  private cabeca: No | null = null;
+
+  // Inserir no final da lista
+  public inserir(valor: number): void {
+    const novo = new No(valor);
+    if (this.cabeca === null) {
+      this.cabeca = novo;
+    } else {
+      let atual = this.cabeca;
+      while (atual.proximo !== null) {
+        atual = atual.proximo;
+      }
+      atual.proximo = novo;
+    }
+  }
+
+  // Remover valor (primeira ocorrência)
+  public remover(valor: number): boolean {
+    if (!this.cabeca) return false;
+
+    if (this.cabeca.valor === valor) {
+      this.cabeca = this.cabeca.proximo;
+      return true;
+    }
+
+    let atual = this.cabeca;
+    while (atual.proximo && atual.proximo.valor !== valor) {
+      atual = atual.proximo;
+    }
+
+    if (atual.proximo) {
+      atual.proximo = atual.proximo.proximo;
+      return true;
+    }
+
+    return false;
+  }
+
+  // Listar todos os elementos
+  public listar(): number[] {
+    const elementos: number[] = [];
+    let atual = this.cabeca;
+    while (atual !== null) {
+      elementos.push(atual.valor);
+      atual = atual.proximo;
+    }
+    return elementos;
+  }
+
+  // Ver se está vazia
+  public estaVazia(): boolean {
+    return this.cabeca === null;
+  }
+}
+
+const listaEncadeada = new ListaEncadeada();
+
+listaEncadeada.inserir(10);
+listaEncadeada.inserir(20);
+listaEncadeada.inserir(30);
+
+console.log("Lista Encadeada:", listaEncadeada.listar()); // [10, 20, 30]
+
+listaEncadeada.remover(20);
+
+console.log("Depois da remoção:", listaEncadeada.listar()); // [10, 30]
