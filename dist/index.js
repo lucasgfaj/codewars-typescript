@@ -3,18 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const ArrRandom_1 = __importDefault(require("./exercises/ArrRandom"));
-const Balancing_1 = __importDefault(require("./exercises/Balancing"));
-const expr1 = new Balancing_1.default("{a + [b * (c - d)]}");
-console.log(expr1.isBalancing()); // true
-const expr2 = new Balancing_1.default("{a + [b * (c - d)]");
-console.log(expr2.isBalancing()); // false
-const randomArr = new ArrRandom_1.default(10);
-console.log(randomArr.toString());
-console.log(randomArr.cutValue(30));
-console.log(randomArr.removeMultiples(6));
-console.log(randomArr.nextMedia());
-console.log(randomArr.reduce(3));
-console.log(randomArr.slice(0, 3));
-console.log(randomArr.reverse());
-console.log(randomArr.amplitude());
+const QuestionBank_1 = __importDefault(require("./exercises/QuestionBank"));
+const banco = new QuestionBank_1.default(["Acre", "Piauí", "Amapá", "Pará", "Bahia", "Ceará"]);
+console.log(banco.newExam(0));
+console.log(banco.newExam(1));
+console.log(banco.newExam(-2));
+const banco1 = new QuestionBank_1.default(["Acre", "Piauí"]);
+console.log(banco1.newExam(-3));
