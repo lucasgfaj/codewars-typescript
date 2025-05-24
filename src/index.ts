@@ -1,14 +1,9 @@
-import ArrayRandom from "./exercises/ArrRandom";
-import Balancing from "./exercises/Balancing";
+import Rodovias from "./exercises/Grafos/Rodovias";
 
-const expr1 = new Balancing("{a + [b * (c - d)]}");
-console.log(expr1.isBalancing()); // true
+let rodovias = new Rodovias();
 
-const expr2 = new Balancing("{a + [b * (c - d)]");
-console.log(expr2.isBalancing()); // false
+rodovias.adiciona("a", "b");
+rodovias.adiciona("a", "c");
+rodovias.adiciona("b", "d");
 
-const randomArr = new ArrayRandom(10);
-
-console.log(randomArr.toString());
-console.log(randomArr.cutValue(30));
-console.log(randomArr.removeMultiples(6));
+console.log(rodovias.toString());
