@@ -1,15 +1,16 @@
-import { CaxeiroViajante } from "./exercises/Sort/CaxeiroViajante";
+import Grafo from "./exercises/Grafos/Grafo";
 
+// Criando o grafo
+const grafo = new Grafo();
 
-const matrizDistancia = [
-  [0, 10, 15, 20],
-  [10, 0, 35, 25],
-  [15, 35, 0, 30],
-  [20, 25, 30, 0]
-];
+// Adicionando vértices
+grafo.adicionarVertice("A");
+grafo.adicionarVertice("B");
+grafo.adicionarVertice("C");
 
-const viajante = new CaxeiroViajante(matrizDistancia);
-const resultado = viajante.calcularMelhorRota();
+// Adicionando arestas
+grafo.adicionarAresta("A", "B");
+grafo.adicionarAresta("A", "C");
 
-console.log("Melhor caminho:", resultado.caminho);
-console.log("Menor custo:", resultado.custo);
+// Exibindo o grafo
+grafo.exibirGrafo();
