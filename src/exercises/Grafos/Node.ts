@@ -69,7 +69,7 @@ class Graph {
  * antes de passar para o próximo.
  */
 
-function bfs(startNode: GraphNode) {
+function bFs(startNode: GraphNode) {
   const visited: Set<GraphNode> = new Set(); // Conjunto de nós visitados
   const queue: GraphNode[] = []; // Fila para visitar os nós
 
@@ -96,7 +96,7 @@ function bfs(startNode: GraphNode) {
  * que visita todos os nós de um ramo antes de ir para o próximo.
  */
 
-function dfs(startNode: GraphNode) {
+function dFs(startNode: GraphNode) {
   const visited: Set<GraphNode> = new Set(); // Conjunto de nós visitados
   const stack: GraphNode[] = []; // Pilha para visitar os nós
 
@@ -128,7 +128,7 @@ function dfs(startNode: GraphNode) {
  * e atualizamos o caminho.
  */
 
-function shortestPath(_graph: Graph, start: GraphNode, target: GraphNode): GraphNode[] | null {
+function shortestPaths(_graph: Graph, start: GraphNode, target: GraphNode): GraphNode[] | null {
   const visited: Set<GraphNode> = new Set(); // Conjunto de nós visitados
   const queue: [GraphNode, GraphNode[]][] = []; // Fila com tuplas (nó, caminho até aqui)
 
