@@ -1,3 +1,4 @@
+// Lucas Gontarz Fajardo, Lucas Eduardo Aurelio
 export default class Park {
     private queue: number[];
 
