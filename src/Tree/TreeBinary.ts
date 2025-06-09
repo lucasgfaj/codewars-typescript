@@ -9,9 +9,10 @@ interface TreeBinaryInterface<T> {
 
   insert(value: T): void;
   find(value: T): NodeInterface<T> | null;
- // preorderTraversal(root?: NodeInterface<T> | null): T[];
- // inorderTraversal(root?: NodeInterface<T> | null): T[];
- // postorderTraversal(root?: NodeInterface<T> | null): T[];
+  printTree(node?: NodeInterface<T> | null, prefix?: string, isLeft?: boolean): void;  // Adicionando o método de impressão
+  // preorderTraversal(root?: NodeInterface<T> | null): T[];
+  // inorderTraversal(root?: NodeInterface<T> | null): T[];
+  // postorderTraversal(root?: NodeInterface<T> | null): T[];
 }
 
 class No<T> implements NodeInterface<T> {
@@ -34,18 +35,18 @@ export class TreeBinary<T> implements TreeBinaryInterface<T> {
   }
 
   private recursiveInsert(value: T, node: No<T>): void {
-    if(value < node.value){
-        if(node.left) {
-            this.recursiveInsert(value, node.left);
-        } else {
-            node.left = new No(value);
-        }
+    if (value < node.value) {
+      if (node.left) {
+        this.recursiveInsert(value, node.left);
+      } else {
+        node.left = new No(value);
+      }
     } else {
-        if(node.right){
-            this.recursiveInsert(value, node.right);
-        } else {
-            node.right = new No(value);
-        }
+      if (node.right) {
+        this.recursiveInsert(value, node.right);
+      } else {
+        node.right = new No(value);
+      }
     }
   }
 
@@ -54,19 +55,41 @@ export class TreeBinary<T> implements TreeBinaryInterface<T> {
   }
 
   private recursiveFind(value: T, node: No<T> | null): No<T> | null {
-		if (!node) {
-			return null;
-		}
+    if (!node) {
+      return null;
+    }
 
-		if (value === node.value) {
-			return node;
-		}
+    if (value === node.value) {
+      return node;
+    }
 
-		if (value < node.value) {
-			return this.recursiveFind(value, node.left);
-		}
+    if (value < node.value) {
+      return this.recursiveFind(value, node.left);
+    }
 
-		return this.recursiveFind(value, node.right);
-	}
+    return this.recursiveFind(value, node.right);
+  }
 
+  public printTree(
+    node: NodeInterface<T> | null = this.root,
+    prefix: string = "",
+    isLeft: boolean = true
+  ): void {
+    if (node === null) return;
+
+    console.log(prefix + (isLeft ? "└── " : "├── ") + node.value);
+
+    if (node.left || node.right) {
+      if (node.left) {
+        this.printTree(node.left, prefix + (isLeft ? "    " : "│   "), true);
+      } else {
+        console.log(prefix + (isLeft ? "    " : "│   ") + "└── " + "null");
+      }
+      if (node.right) {
+        this.printTree(node.right, prefix + (isLeft ? "    " : "│   "), false);
+      } else {
+        console.log(prefix + (isLeft ? "    " : "│   ") + "└── " + "null");
+      }
+    }
+  }
 }
