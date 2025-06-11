@@ -14,7 +14,7 @@ interface TreeBinaryInterface<T> {
     node?: NodeInterface<T> | null,
     prefix?: string,
     isLeft?: boolean
-  ): void; 
+  ): void;
   balance(): void;
   preorderTraversal(root?: NodeInterface<T> | null): T[];
   inorderTraversal(root?: NodeInterface<T> | null): T[];
@@ -157,12 +157,17 @@ export class TreeBinary<T> implements TreeBinaryInterface<T> {
     ];
   }
 
+  //DFS significa Depth-First Search (Busca em Profundidade).
+  //É um algoritmo para percorrer ou buscar elementos em estruturas de dados como árvores ou grafos.
   public dfs(value: T, root: NodeInterface<T> | null = this.root): boolean {
     if (!root) return false;
     if (root.value === value) return true;
     return this.dfs(value, root.left) || this.dfs(value, root.right);
   }
-
+  // bfs significa "Busca em Largura" (Breadth-First Search),
+  // um algoritmo para percorrer ou buscar elementos em estruturas
+  //  de dados como árvores ou grafos, explorando todos os nós em cada nível
+  // antes de avançar para o próximo nível.
   public bfs(value: T): boolean {
     if (!this.root) return false;
     const deque = [];
