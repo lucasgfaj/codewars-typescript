@@ -1,13 +1,13 @@
-import { NetworkWithNode } from "./Grafos/NetworkWithNode";
 import { Network } from "./Grafos/NetworkWithT";
 
-const net = new NetworkWithNode();
+const net = new Network();
 
-net.addEdge('A', 'B');
-net.addEdge('A', 'C');
-net.addEdge('C', 'D');
-net.addEdge('E', 'F');
-net.addEdge('G', 'E');
-net.addEdge('H', 'I');
+net.add('A', 'B');
+net.add('A', 'C');
+net.add('C', 'D');
+net.add('E', 'F');
+net.add('G', 'E');
+net.add('H', 'I');
 
-console.log(net.getConnected('F'));
+console.log(net.getConnected('A'));
+console.log(net.getNotConnected('A'));
