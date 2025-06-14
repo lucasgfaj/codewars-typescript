@@ -54,7 +54,7 @@ export class Network<T> implements INetwork<T> {
       this.dfs(neighbor, visited, result);
     }
 
-    return result;
+    return result.sort();
   }
 
   private dfs(v: T, visited: Set<T>, result: T[]): void {
