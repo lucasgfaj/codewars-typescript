@@ -30,8 +30,12 @@ export class Network<T> implements INetwork<T> {
     }
   }
 
-  public add(vertex1: T, vertex2: T): void {
+  public add(vertex1: T, vertex2?: T): void {
     this.addVertex(vertex1);
+
+    if (!vertex2)
+      return;
+
     this.addVertex(vertex2);
 
     if (!this.networkList.get(vertex1)!.includes(vertex2)) {
